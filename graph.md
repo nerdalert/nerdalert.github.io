@@ -50,9 +50,10 @@ The measurements were taken starting at zero pods up to 225 pods. The
 workload consists of scaling Nginx replicas in an increment of 25 at a time.
 
 In the case of OpenShift SNO, the node became resource constrained as it approached
-around 175 pods. This was due to there only being 16GB of memory on the VM. 
-If the node had more memory it would handily scale beyond 250 pods as 
-described in [OpenShift scalability and performance](https://docs.openshift.com/container-platform/4.6/scalability_and_performance/planning-your-environment-according-to-object-maximums.html).
+around 175 pods where kube-api begins to bounce and pods get stuck in pending. 
+This was due to there only being 16GB of memory on the VM. If the node had more 
+memory it would handily scale beyond 250 pods as described in 
+[OpenShift scalability and performance](https://docs.openshift.com/container-platform/4.6/scalability_and_performance/planning-your-environment-according-to-object-maximums.html).
 
 The following is percent of compute available on the node. Each node is identical
 and resourced as listed above:
@@ -60,6 +61,19 @@ and resourced as listed above:
 {% include cpu-comps.html %}
 
 Lastly, is the percent of memory consumed on each node. Again, OpenShift SNO hits
-the wall around 175 workload pods:
+the wall around 175 workload pods which is why you see it drop off the plot after
+175 pods:
 
 {% include memory-comps.html %}
+
+### Conclusion
+
+MicroShift and K3s both serve the purpose of a lightweight distribution that is
+attractive for gateway deployments. The reasoning is simply, the more memory and
+compute on a node, the faster a node and move encapsulated network data. There is
+a direct correlation to resources available to a node and the performance of the
+datapath. This is of course not to say, OpenShift isn't a viable candidate as well,
+and in many cases is the only option as it will have features that will never be
+included in stripped down Kubernetes deployments. Hardware offloading and acceleration 
+are also mechanisms to improve datapath performance that would rely less on the node
+resources to achieve better performance that will be captured in the future.
