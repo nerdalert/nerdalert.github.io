@@ -1,3 +1,8 @@
+---
+layout: default
+title: Edge Centric Kubernetes Distributions Analysis
+---
+
 ### Edge Centric Kubernetes Distributions Analysis
 
 In this writeup we will review and compare some options for Kubernetes 

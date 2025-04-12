@@ -22,3 +22,7 @@ go.work
 
 # jetbrains
 .idea/
+
+# Jekyll
+.jekyll-cache
+_site/
