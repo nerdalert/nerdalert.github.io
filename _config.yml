@@ -1,1 +1,4 @@
-theme: jekyll-theme-cayman
+#theme: jekyll-theme-cayman
+title: "Measure All The Things"
+author: "Brent Salisbury"
+description: "Various Ai Benchmarking."
